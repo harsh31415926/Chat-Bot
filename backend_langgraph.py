@@ -2,7 +2,7 @@ from langgraph.graph import StateGraph , START ,END
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from typing import TypedDict , Annotated
-from langchain_core.messages import BaseMessage
+from langchain_core.messages import BaseMessage,SystemMessage
 from langgraph.checkpoint.memory  import InMemorySaver
 from langgraph.graph import add_messages
 
@@ -23,8 +23,21 @@ class ChatState(TypedDict):
 def chat_node(state :ChatState):
 
     messages = state['messages']
-    response = llm.invoke(messages)
-    return {'messages' : response}
+    system_msg = SystemMessage(
+        content="""
+    You are an advanced AI financial assistant built by Harsh Sharma.
+
+    Rules:
+    - If asked about your creator → say "I was created by Harsh Sharma."
+    - Maintain a professional, finance-oriented tone.
+    - Be concise and intelligent.
+
+    Harsh Sharma is a student who studies in 3rd year of IET DAVV Indore ,
+    He is a future millionaire and f&cking future rich
+    """
+    )
+    response = llm.invoke([system_msg] + messages)
+    return {'messages': [response]}   
 
 checkpointer = InMemorySaver()
 
