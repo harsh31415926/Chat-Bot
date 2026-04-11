@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit_app as st
 from langchain_core.messages import HumanMessage
 from backend_langgraph import chatbot
 
