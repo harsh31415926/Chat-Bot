@@ -1,89 +1,167 @@
-# 🚀 NEXORA CAPITAL — AI Trading Desk
+# 🚀 CHATW AI — Agentic Intelligence Platform
 
-> **Quant Intelligence · Execution Systems · Internal Use Only**
+> Intelligent Conversations · Agentic Workflows · Real-Time Assistance
 
-NEXORA CAPITAL is a production-style AI chatbot built using **LangGraph** and **Groq LLM**, designed to simulate an intelligent **hedge fund trading desk interface**.
+CHATW AI is a modern AI assistant built using LangGraph, Streamlit, and Groq LLMs. It demonstrates how to build production-ready agentic systems with memory, tool integration, database persistence, and ultra-fast inference.
 
-This project demonstrates how to build **stateful AI agents** with memory, tool calling, database persistence, and high-speed inference.
-
----
-
-## 🧠 Features
-
-- ⚡ **Ultra-fast Responses**: Powered by Groq Cloud (`llama-3.3-70b-versatile` & `llama-3.1-8b-instant`).
-- 🔁 **Stateful Conversations**: Multi-thread session state managed via LangGraph memory.
-- 🛠️ **Tool-Calling Integration**: Agent automatically triggers search (DuckDuckGo), stock market data (Alpha Vantage), and arithmetic calculators.
-- 💾 **SQLite DB Checkpointing**: Persistent conversation threads stored in a database.
-- 🏦 **Hedge Fund UI**: Premium, dark-themed dashboard built with custom Streamlit styling and CSS glassmorphism.
+The platform is designed to provide intelligent, context-aware conversations while showcasing advanced AI engineering concepts such as stateful agents, workflow orchestration, and tool calling.
 
 ---
 
-## 📂 Frontend App Options
+## 🧠 Core Features
 
-We provide three frontend entrypoints depending on your testing level:
-1. **[streamlit_app.py](streamlit_app.py)**: The basic UI with memory.
-2. **[frontend_streamlit.py](frontend_streamlit.py)**: High-end hedge-fund-styled UI with radial gradients.
-3. **[streamlit_frontend_database.py](streamlit_frontend_database.py)**: The complete feature set featuring agent tool execution (Search, Finance APIs) and persistent database storage.
+### ⚡ High-Speed Inference
+
+Powered by Groq's ultra-low-latency models including:
+
+* llama-3.3-70b-versatile
+* llama-3.1-8b-instant
+
+### 🔁 Stateful Memory
+
+Maintains conversation context using LangGraph memory architecture for seamless multi-turn interactions.
+
+### 🛠️ Tool Calling
+
+Supports intelligent tool execution including:
+
+* Web Search
+* Financial Data Retrieval
+* Mathematical Calculations
+* Custom Agent Actions
+
+### 💾 Persistent Storage
+
+Stores conversation history and agent state using SQLite-based checkpointing.
+
+### 🎨 Modern User Experience
+
+Built with Streamlit and custom styling to deliver a professional, responsive, and visually appealing interface.
 
 ---
 
-## 🛠️ Local Setup (macOS & Linux)
+## 🏗️ Technology Stack
 
-### 1. Clone & Navigate
+* Python
+* LangGraph
+* LangChain
+* Streamlit
+* Groq API
+* SQLite
+* DuckDuckGo Search
+* Alpha Vantage API
+
+---
+
+## 📂 Application Entry Points
+
+### 1. streamlit_app.py
+
+Basic chatbot interface with conversation memory.
+
+### 2. frontend_streamlit.py
+
+Enhanced premium interface with custom styling and improved user experience.
+
+### 3. streamlit_frontend_database.py
+
+Full production-style application with:
+
+* Database persistence
+* Tool execution
+* Stateful memory
+* Advanced workflows
+
+---
+
+## 🚀 Local Installation
+
+### Clone Repository
+
 ```bash
-git clone https://github.com/your-username/nexora-capital.git
-cd nexora-capital
+git clone https://github.com/your-username/chatw-ai.git
+cd chatw-ai
 ```
 
-### 2. Set Up a Virtual Environment
+### Create Virtual Environment
+
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-### 3. Install Dependencies
+### Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Configure Environment Variables
-Copy `.env.example` to `.env`:
-```bash
-cp .env.example .env
-```
-Open `.env` and fill in your API credentials:
+### Configure Environment Variables
+
+Create a `.env` file:
+
 ```env
-GROQ_API_KEY=gsk_...
-ALPHA_VANTAGE_API_KEY=...
+GROQ_API_KEY=your_groq_api_key
+ALPHA_VANTAGE_API_KEY=your_alpha_vantage_api_key
 ```
 
-### 5. Run the Application
-Start the premium app with database persistence and tools:
+### Run Application
+
+```bash
+streamlit run frontend_streamlit.py
+```
+
+or
+
 ```bash
 streamlit run streamlit_frontend_database.py
 ```
-*(Alternatively, you can run `streamlit run frontend_streamlit.py` or `streamlit run streamlit_app.py`)*
 
 ---
 
-## 🌩️ Deploying to Streamlit Community Cloud
+## 🌐 Live Demo
 
-1. Push your code to a public **GitHub Repository** (refer to safety instructions below).
-2. Go to [share.streamlit.io](https://share.streamlit.io/) and log in.
-3. Click **New app**, select your repository, branch, and set the Main file path to:
-   `streamlit_frontend_database.py` (or `streamlit_app.py`)
-4. Expand **Advanced settings...** and paste your environment variables into the **Secrets** text area:
-   ```toml
-   GROQ_API_KEY = "your-groq-key-here"
-   ALPHA_VANTAGE_API_KEY = "your-alpha-vantage-key-here"
-   ```
-5. Click **Deploy**!
+CHATW AI is deployed on Streamlit Community Cloud:
+
+https://chatw-chatbot.streamlit.app/
 
 ---
 
-## 🛡️ Security & GitHub Best Practices
+## ☁️ Streamlit Deployment
 
-To protect your API credentials:
-* **Never commit your `.env` or `chatbot.db` file**. The `.gitignore` has been pre-configured to block these.
-* Utilize the `.env.example` file to show collaborators which environment variables are expected.
-* For team deployment, add variables in Streamlit's secrets manager.
+Add the following secrets in Streamlit Cloud:
+
+```toml
+GROQ_API_KEY = "your-groq-key"
+ALPHA_VANTAGE_API_KEY = "your-alpha-vantage-key"
+```
+
+Then deploy using:
+
+```text
+frontend_streamlit.py
+```
+
+or
+
+```text
+streamlit_frontend_database.py
+```
+
+as the entrypoint.
+
+---
+
+## 🔒 Security Best Practices
+
+* Never commit `.env` files.
+* Never commit API keys.
+* Store credentials using Streamlit Secrets.
+* Keep databases and temporary files excluded using `.gitignore`.
+* Rotate API keys immediately if they are accidentally exposed.
+
+---
+
+## 🎯 Purpose
+
+This project serves as a practical demonstration of modern Agentic AI systems, combining conversational intelligence, memory, tool usage, and workflow orchestration into a deployable production-style application.
