@@ -1,0 +1,48 @@
+# Environment variables
+.env
+
+# Local database
+*.db
+
+# Virtual environments
+chatbot_env/
+venv/
+.venv/
+env/
+
+# Python cache & build files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ipynb_checkpoints/
+
+# macOS system files
+.DS_Store
+
+# IDE configurations
+.vscode/
+.idea/
+
+
+chatbot_env/
+.venv/
+__pycache__/
+*.pyc
+.env
+
+chatbot_env/
+venv/
+.venv/
+env/
+
+.env
+chatbot.db
+chatbot.db-shm
+chatbot.db-wal
+
+__pycache__/
+*.pyc
+.vscode/
+.DS_Store
